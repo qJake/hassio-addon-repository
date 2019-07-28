@@ -3,7 +3,7 @@
   "version": "0.1",
   "slug": "hapanel",
   "description": "A wall-mountable panel interface for Home Assistant",
-  "webui": "http://[HOST]:[PORT:9095]/"
+  "webui": "http://[HOST]:[PORT:9095]/",
   "arch": ["amd64", "i386", "armv7"],
   "url": "https://github.com/qJake/HADotNet.Panel",
   "startup": "application",
