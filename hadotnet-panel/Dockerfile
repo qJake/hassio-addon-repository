@@ -1,40 +1,22 @@
 ARG BUILD_FROM=hassioaddons/base:4.0.2
-ARG REPO=mcr.microsoft.com/dotnet/core/runtime-deps
-
-# .NET Core 2.2.6 for Alpine - Download and Install
-
-FROM $REPO:2.2-alpine3.9 AS bld
-
-ENV ASPNETCORE_VERSION 2.2.6
-ENV ASPNETCORE_URLS http://+:9095
-
-RUN wget -O aspnetcore.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/aspnetcore/Runtime/$ASPNETCORE_VERSION/aspnetcore-runtime-$ASPNETCORE_VERSION-linux-musl-x64.tar.gz \
-    && aspnetcore_sha512='590e73898a6f1b3ef7b86e019b681a3099b7046b02cdb7f99dea61460aa6079211a42af3587bf71c03c19655dc24455098b14b3e9a9a12aeb2e64b7ecc207f84' \
-    && echo "$aspnetcore_sha512  aspnetcore.tar.gz" | sha512sum -c - \
-    && mkdir -p /usr/share/dotnet \
-    && tar -zxf aspnetcore.tar.gz -C /usr/share/dotnet \
-    && rm aspnetcore.tar.gz \
-    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet \
-    && apk add --no-cache git \
-    && mkdir /src \
-    && cd /src \
-    && wget -O release.tar.gz https://github.com/qJake/HADotNet.Panel/releases/download/v0.0.3-alpha/HADotNet.Panel.tar.gz \
-    && tar xzf release.tar.gz \
-    && rm -rf release.tar.gz
-
-# Hass.io Add-on Container
-
 FROM ${BUILD_FROM}
 
 ENV LANG C.UTF-8
 
-# Copy .NET Runtime over
+ENV ASPNETCORE_VERSION 2.2.6
+ENV ASPNETCORE_URLS http://+:9095
 
-WORKDIR /
+RUN wget -O aspnetcore.tar.gz https://download.visualstudio.microsoft.com/download/pr/c3257647-9887-4822-8a18-0debbeabd3b2/5cd0346e78464231883604e544cee8dd/aspnetcore-runtime-2.2.6-linux-musl-x64.tar.gz \
+    && mkdir -p /usr/share/dotnet \
+    && tar -zxf aspnetcore.tar.gz -C /usr/share/dotnet \
+    && rm aspnetcore.tar.gz \
+    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
-COPY --from=bld /usr/share/dotnet /usr/share/dotnet
-
-RUN ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+RUN mkdir /src \
+    && cd /src \
+    && wget -O release.tar.gz https://github.com/qJake/HADotNet.Panel/releases/download/v0.0.3-alpha/HADotNet.Panel.tar.gz \
+    && tar xzf release.tar.gz \
+    && rm -rf release.tar.gz
 
 WORKDIR /src
 
