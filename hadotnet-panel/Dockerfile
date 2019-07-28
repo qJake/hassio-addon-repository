@@ -7,7 +7,10 @@ ENV ASPNETCORE_VERSION 2.2.6
 ENV ASPNETCORE_URLS http://+:9095
 
 RUN apk add --no-cache libstdc++ \
-    && wget -O aspnetcore.tar.gz https://download.visualstudio.microsoft.com/download/pr/c3257647-9887-4822-8a18-0debbeabd3b2/5cd0346e78464231883604e544cee8dd/aspnetcore-runtime-2.2.6-linux-musl-x64.tar.gz \
+    && apk add --no-cache libc6-compat \
+    && apk add --no-cache libunwind-dev
+    
+RUN wget -O aspnetcore.tar.gz https://download.visualstudio.microsoft.com/download/pr/c3257647-9887-4822-8a18-0debbeabd3b2/5cd0346e78464231883604e544cee8dd/aspnetcore-runtime-2.2.6-linux-musl-x64.tar.gz \
     && mkdir -p /usr/share/dotnet \
     && tar -zxf aspnetcore.tar.gz -C /usr/share/dotnet \
     && rm aspnetcore.tar.gz \
