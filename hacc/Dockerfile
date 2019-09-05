@@ -1,6 +1,5 @@
 # ASP.NET Core 3.x Runtime
-#FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine3.9-arm64v8 AS dotnet
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine3.9 AS dotnet
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine3.9-arm64v8 AS dotnet
 
 ARG HACC_VERSION=0.4.6
 
