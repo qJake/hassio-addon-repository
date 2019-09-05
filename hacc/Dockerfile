@@ -16,8 +16,7 @@ RUN mkdir /app \
     && cd /app \
     && wget -qO app.tar.gz https://github.com/qJake/HADotNet.CommandCenter/releases/download/v$HACC_VERSION/HADotNet.CommandCenter-armhf.tar.gz \
     && tar xzf app.tar.gz \
-    && rm -rf app.tar.gz \
-	&& ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+    && rm -rf app.tar.gz
 
 CMD ["dotnet", "HADotNet.CommandCenter.dll"]
 
