@@ -2,7 +2,7 @@
   "name": "HA Command Center",
   "version": "0.4.1",
   "slug": "hacc",
-  "description": "A wall-mountable tablet interface for Home Assistant.",
+  "description": "A wall-mountable tablet interface for Home Assistant",
   "webui": "http://[HOST]:[PORT:8095]/",
   "arch": ["amd64", "i386", "armv7"],
   "url": "https://github.com/qJake/HADotNet.CommandCenter",
