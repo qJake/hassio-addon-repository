@@ -1,5 +1,5 @@
 ARG BUILD_FROM=hassioaddons/base:4.0.2
-ARG HACC_VERSION=0.4.1
+ARG HACC_VERSION=0.4.3
 
 FROM ${BUILD_FROM} AS base
 
