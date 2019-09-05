@@ -1,11 +1,10 @@
 ARG BUILD_FROM=hassioaddons/base:4.0.2
+ARG HACC_VERSION=0.4.1
+
 FROM ${BUILD_FROM} AS base
 
 # ASP.NET Core 3.x Runtime
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine3.9-arm64v8 AS dotnet
-ARG TAG=master
-
-ENV HACC_VERSION $TAG
 
 WORKDIR /
 
@@ -13,36 +12,31 @@ RUN apk update && apk add wget tar
 
 RUN mkdir /app \
     && cd /app \
-    && wget -qO app.tar.gz https://github.com/qJake/HADotNet.CommandCenter/releases/download/$TAG/HADotNet.CommandCenter-armhf.tar.gz \
+    && wget -qO app.tar.gz https://github.com/qJake/HADotNet.CommandCenter/releases/download/v$HACC_VERSION/HADotNet.CommandCenter-armhf.tar.gz \
     && tar xzf app.tar.gz \
     && rm -rf app.tar.gz
 	
 # Pull publish into runtime
 FROM base AS final
-ARG TAG=master
 
 ## Copy dotnet runtime over
-WORKDIR /usr/share
+WORKDIR /
 
-COPY --from=dotnet ./dotnet .
+COPY --from=dotnet /usr/share/dotnet /usr/share/dotnet
 
 RUN ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
-
-WORKDIR /app
 
 COPY --from=dotnet /app .
 
 ENV ASPNETCORE_URLS http://*:8095
 ENV ASPNETCORE_ENVIRONMENT Production
-ENV HACC_VERSION $TAG
+ENV HACC_VERSION $HACC_VERSION
 
 # Pull .NET stuff into Hassio Base
 
 EXPOSE 8095
 
 ENV LANG C.UTF-8
-
-ENV ASPNETCORE_VERSION 3.0.0
 
 CMD ["dotnet", "HADotNet.CommandCenter.dll"]
 
@@ -62,7 +56,7 @@ LABEL \
     org.label-schema.description="Wall-mountable tablet interface for Home Assistant." \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="HACC" \
-    org.label-schema.schema-version="0.4.1" \
+    org.label-schema.schema-version="$HACC_VERSION" \
     org.label-schema.url="https://github.com/qJake/HADotNet.Panel/" \
     org.label-schema.usage="https://github.com/qJake/HADotNet.Panel/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
