@@ -18,7 +18,7 @@ RUN mkdir /app \
     && tar xzf app.tar.gz \
     && rm -rf app.tar.gz
 
-CMD ["dotnet", "HADotNet.CommandCenter.dll"]
+CMD ["/usr/share/dotnet/dotnet", "HADotNet.CommandCenter.dll"]
 
 # Build arguments
 ARG BUILD_DATE
