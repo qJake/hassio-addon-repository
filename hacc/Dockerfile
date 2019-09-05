@@ -1,14 +1,14 @@
 ARG BUILD_FROM=hassioaddons/base:4.0.2
-ARG HACC_VERSION=0.4.3
 
 FROM ${BUILD_FROM} AS base
 
 # ASP.NET Core 3.x Runtime
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine3.9-arm64v8 AS dotnet
 
-WORKDIR /
+ARG HACC_VERSION=0.4.3
+ENV HACC_VERSION $HACC_VERSION
 
-RUN apk update && apk add wget tar
+WORKDIR /
 
 RUN mkdir /app \
     && cd /app \
