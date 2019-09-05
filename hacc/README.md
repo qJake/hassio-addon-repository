@@ -1,3 +1,5 @@
-# Hass.io Community Add-on: HA Panel
+# Hass.io Community Add-on: HA Command Center
 
-A wall-mountable web interface for Home Assistant.
+A wall-mountable tablet interface for Home Assistant.
+
+![hacc-interface](https://raw.githubusercontent.com/qJake/HADotNet.CommandCenter/master/Assets/screenshot-dashboard.png)
