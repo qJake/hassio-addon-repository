@@ -1,12 +1,14 @@
-ARG BUILD_FROM=hassioaddons/base:4.0.2
-
-FROM ${BUILD_FROM} AS base
-
 # ASP.NET Core 3.x Runtime
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine3.9-arm64v8 AS dotnet
 
-ARG HACC_VERSION=0.4.5
+ARG HACC_VERSION=0.4.6
+
 ENV HACC_VERSION $HACC_VERSION
+ENV ASPNETCORE_URLS http://*:8095
+ENV ASPNETCORE_ENVIRONMENT Production
+ENV LANG C.UTF-8
+
+EXPOSE 8095
 
 WORKDIR /
 
@@ -15,28 +17,7 @@ RUN mkdir /app \
     && wget -qO app.tar.gz https://github.com/qJake/HADotNet.CommandCenter/releases/download/v$HACC_VERSION/HADotNet.CommandCenter-armhf.tar.gz \
     && tar xzf app.tar.gz \
     && rm -rf app.tar.gz
-	
-# Pull publish into runtime
-FROM base AS final
-
-## Copy dotnet runtime over
-WORKDIR /
-
-COPY --from=dotnet /usr/share/dotnet /usr/share/dotnet
-
-RUN ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
-
-COPY --from=dotnet /app .
-
-ENV ASPNETCORE_URLS http://*:8095
-ENV ASPNETCORE_ENVIRONMENT Production
-ENV HACC_VERSION $HACC_VERSION
-
-# Pull .NET stuff into Hassio Base
-
-EXPOSE 8095
-
-ENV LANG C.UTF-8
+	&& ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
 CMD ["dotnet", "HADotNet.CommandCenter.dll"]
 
