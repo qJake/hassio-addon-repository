@@ -5,7 +5,7 @@ FROM ${BUILD_FROM} AS base
 # ASP.NET Core 3.x Runtime
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine3.9-arm64v8 AS dotnet
 
-ARG HACC_VERSION=0.4.3
+ARG HACC_VERSION=0.4.5
 ENV HACC_VERSION $HACC_VERSION
 
 WORKDIR /
