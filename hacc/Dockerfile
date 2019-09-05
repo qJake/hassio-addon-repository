@@ -1,5 +1,6 @@
 # ASP.NET Core 3.x Runtime
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine3.9-arm64v8 AS dotnet
+#FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine3.9-arm64v8 AS dotnet
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine3.9 AS dotnet
 
 ARG HACC_VERSION=0.4.6
 
@@ -16,9 +17,10 @@ RUN mkdir /app \
     && cd /app \
     && wget -qO app.tar.gz https://github.com/qJake/HADotNet.CommandCenter/releases/download/v$HACC_VERSION/HADotNet.CommandCenter-armhf.tar.gz \
     && tar xzf app.tar.gz \
-    && rm -rf app.tar.gz
+    && rm -rf app.tar.gz \
+	&& ln -s /usr/share/dotnet/shared/Microsoft.NETCore.App/3.0.0-preview9-19423-09 /usr/share/dotnet/shared/Microsoft.NETCore.App/3.0.0
 
-CMD ["/usr/share/dotnet/dotnet", "HADotNet.CommandCenter.dll"]
+CMD ["dotnet", "HADotNet.CommandCenter.dll"]
 
 # Build arguments
 ARG BUILD_DATE
