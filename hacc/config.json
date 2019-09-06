@@ -1,6 +1,6 @@
 {
   "name": "HA Command Center",
-  "version": "0.4.11",
+  "version": "0.4.12",
   "slug": "hacc",
   "description": "A wall-mountable tablet interface for Home Assistant",
   "webui": "http://[HOST]:[PORT:8095]/",
