@@ -1,10 +1,10 @@
 {
   "name": "HA Command Center",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "slug": "hacc",
   "description": "A wall-mountable tablet interface for Home Assistant",
   "webui": "http://[HOST]:[PORT:8095]/",
-  "arch": ["amd64", "i386", "armv7"],
+  "arch": [ "amd64", "i386", "armv7" ],
   "url": "https://github.com/qJake/HADotNet.CommandCenter",
   "startup": "application",
   "boot": "auto",
@@ -14,7 +14,10 @@
   "ports": {
     "8095/tcp": 8095
   },
-  "map": ["ssl"],
+  "ports_description": {
+    "8095/tcp": "Web interface (Admin is located at /admin)"
+  }
+  "map": [ "ssl" ],
   "options": {},
   "schema": {}
 }
