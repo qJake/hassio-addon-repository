@@ -1,7 +1,7 @@
 # ASP.NET Core 3.x Runtime
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim-arm32v7 AS dotnet
 
-ARG HACC_VERSION=0.4.10
+ARG HACC_VERSION=0.4.11
 
 ENV HACC_VERSION $HACC_VERSION
 ENV ASPNETCORE_URLS http://*:8095
