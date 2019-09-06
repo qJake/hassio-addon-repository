@@ -1,5 +1,5 @@
 # ASP.NET Core 3.x Runtime
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS dotnet
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim-arm32v7 AS dotnet
 
 ARG HACC_VERSION=0.4.8
 
