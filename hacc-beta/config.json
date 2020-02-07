@@ -1,13 +1,14 @@
 {
-  "name": "HA Command Center",
+  "name": "HA Command Center (Beta)",
   "version": "1.0.0",
-  "slug": "hacc",
+  "slug": "haccb",
   "description": "A wall-mountable tablet interface for Home Assistant",
   "webui": "http://[HOST]:[PORT:8095]/",
   "ingress": true,
   "ingress_port": 8095,
   "panel_icon": "mdi:view-dashboard",
   "panel_admin": true,
+  "panel_title": "HA Command Center (B)",
   "arch": [ "amd64", "i386", "armv7", "armhf" ],
   "image": "qjake/hacc-hassio-{arch}:1.0.0",
   "url": "https://github.com/qJake/HADotNet.CommandCenter",
@@ -20,7 +21,7 @@
     "8095/tcp": 8095
   },
   "ports_description": {
-    "8095/tcp": "Web interface (Admin is located at /admin)"
+    "8095/tcp": "Web interface (Dashboard is located at /d/)"
   },
   "map": [ "ssl" ],
   "options": {},
