@@ -1,0 +1,29 @@
+{
+  "name": "HA Command Center",
+  "version": "1.0.0",
+  "slug": "hacc",
+  "description": "A wall-mountable tablet interface for Home Assistant",
+  "webui": "http://[HOST]:[PORT:8095]/",
+  "ingress": true,
+  "ingress_port": 8095,
+  "panel_icon": "mdi:view-dashboard",
+  "panel_admin": true,
+  "arch": [ "amd64", "i386", "armv7", "armhf" ],
+  "image": "qjake/hacc-hassio-{arch}:1.0.0",
+  "url": "https://github.com/qJake/HADotNet.CommandCenter",
+  "startup": "application",
+  "boot": "auto",
+  "homeassistant_api": true,
+  "apparmor": true,
+  "timeout": 60,
+  "ports": {
+    "8095/tcp": 8095
+  },
+  "ports_description": {
+    "8095/tcp": "Web interface (Admin is located at /admin)"
+  },
+  "map": [ "ssl" ],
+  "options": {},
+  "schema": {},
+  "stage": "experimental"
+}
