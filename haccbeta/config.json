@@ -10,7 +10,7 @@
   "panel_admin": true,
   "panel_title": "HA Command Center (B)",
   "arch": [ "amd64", "i386", "armv7", "armhf" ],
-  "image": "qjake/hacc-hassio-{arch}:1.0.0",
+  "image": "qjake/hacc-hassio-{arch}",
   "url": "https://github.com/qJake/HADotNet.CommandCenter",
   "startup": "application",
   "boot": "auto",
@@ -25,5 +25,6 @@
   },
   "map": [ "ssl" ],
   "options": {},
-  "schema": {}
+  "schema": {},
+  "stage": "experimental"
 }
