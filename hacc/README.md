@@ -4,7 +4,7 @@
 
 ![release](https://img.shields.io/github/v/release/qjake/HADotNet.CommandCenter?color=%2300CC00&logo=github&sort=semver) ![ci-badge](https://github.com/qJake/HADotNet.CommandCenter/workflows/CI%20Build/badge.svg)
 
-[![Buy me a coffee](https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png)](https://www.buymeacoffee.com/qJake)
+[![Buy me a coffee](https://raw.githubusercontent.com/qJake/HADotNet.CommandCenter/master/Assets/bmac.png)](https://www.buymeacoffee.com/qJake)
 
 A wall-mountable tablet interface for Home Assistant.
 
