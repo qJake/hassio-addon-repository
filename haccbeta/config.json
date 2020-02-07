@@ -25,6 +25,5 @@
   },
   "map": [ "ssl" ],
   "options": {},
-  "schema": {},
-  "stage": "experimental"
+  "schema": {}
 }
