@@ -12,4 +12,6 @@ A wall-mountable tablet interface for Home Assistant.
 
 For more information, please **[refer to the repository page.](https://github.com/qJake/HADotNet.CommandCenter/)**
 
+Or visit us on the web at **[hacc.dev](https://hacc.dev)**
+
 ![hacc-interface](https://raw.githubusercontent.com/qJake/HADotNet.CommandCenter/master/Assets/screenshot-dashboard.png)
