@@ -1,6 +1,6 @@
 {
   "name": "HA Command Center (Beta)",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "slug": "haccb",
   "description": "A wall-mountable tablet interface for Home Assistant",
   "webui": "http://[HOST]:[PORT:8095]/",
