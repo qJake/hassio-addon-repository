@@ -18,7 +18,7 @@
   "ports_description": {
     "8095/tcp": "Web interface"
   },
-  "map": [ "ssl" ],
+  "map": [ "ssl", "config:rw" ],
   "options": {},
   "schema": {},
   "stage": "experimental"
