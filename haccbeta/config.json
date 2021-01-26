@@ -19,7 +19,11 @@
     "8095/tcp": "Web interface"
   },
   "map": [ "ssl", "config:rw" ],
-  "options": {},
-  "schema": {},
+  "options": {
+    "HACC:ConfigLocation": "/data"
+  },
+  "schema": {
+    "HACC:ConfigLocation": "str"
+  },
   "stage": "experimental"
 }
